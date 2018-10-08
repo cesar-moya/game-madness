@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include"IO/Mouse.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
@@ -32,6 +33,11 @@ bool Engine::Initialize(const char* windowTitle) {
 	//in glfw there is double buffering, one is what's being shown, the other one is where you draw, then you swap them
 	glfwSwapInterval(1); //secs
 
+	//setup the mouse callbacks (tell GLFW about them), each time a cursor position is polled, it'll call our callback with the data
+	glfwSetCursorPosCallback(window, Mouse::MousePosCallback);
+	glfwSetMouseButtonCallback(window, Mouse::MouseButtonCallback);
+
+	//set the monitor/video mode
 	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
 	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
 	
@@ -65,7 +71,7 @@ bool Engine::Initialize(const char* windowTitle) {
 }
 
 void Engine::Update() {
-	//allow glfw to allow all events to stack in the queue, like hovering mouse, etc
+	//allow glfw to allow all events to stack in the queue, like hovering mouse, etc. these were setup on initialize.
 	glfwPollEvents();
 }
 
