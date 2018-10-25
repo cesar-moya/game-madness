@@ -8,11 +8,14 @@
 
 using namespace std;
 
+///This should be a singleton
 class Engine{
 
 public:
 	static int SCREEN_WIDTH;
 	static int SCREEN_HEIGHT;
+
+	static double GetDT(); //get delta time
 
 	Engine();
 	~Engine();
@@ -26,9 +29,12 @@ public:
 
 private:
 	static GLFWwindow* window;
+	
+	//delta time, the time it took for a frame / cycle to complete. we'll multiply this by the speed to enusure everything moves at a constant rate 
+	//regardless of whether you have a faster machine
+	static double dt; 
+	double lastTime; //last time anything happened, in miliseconds
 
 };
-
-
 
 #endif
