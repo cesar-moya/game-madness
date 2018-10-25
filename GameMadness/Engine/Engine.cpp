@@ -5,7 +5,7 @@
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
 GLFWwindow* Engine::window = NULL;
-double Engine::dt = 0;
+float Engine::dt = 0;
 
 Engine::Engine() {
 
@@ -73,7 +73,7 @@ bool Engine::Initialize(const char* windowTitle) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	lastTime = glfwGetTime();
+	lastTime = (float)glfwGetTime();
 	
 	return true;
 }
@@ -81,7 +81,7 @@ bool Engine::Initialize(const char* windowTitle) {
 void Engine::Update() {
 	//this is the first function that gets called when the game loop
 	//calculate how long it took to go through a single instance of the game loop
-	double now = glfwGetTime();
+	float now = (float)glfwGetTime();
 	dt = now - lastTime;
 	lastTime = now;
 
@@ -107,6 +107,6 @@ void Engine::EndRender() {
 	//anything drawn after this will never be seen by human eyes
 }
 
-double Engine::GetDT() {
+float Engine::GetDT() {
 	return dt;
 }
