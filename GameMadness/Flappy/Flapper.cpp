@@ -7,7 +7,7 @@ Flapper::Flapper() {
 
 Flapper::Flapper(Sprite _sprite) {
 	sprite = _sprite;
-	rb.Initialize(0.5f, 0, sprite.GetPos(), sprite.GetRot(), sprite.GetScale(), sprite.GetSize());
+	rb.Initialize(0.8f, -10, sprite.GetPos(), sprite.GetRot(), sprite.GetScale(), sprite.GetSize());
 }
 
 void Flapper::Update() {

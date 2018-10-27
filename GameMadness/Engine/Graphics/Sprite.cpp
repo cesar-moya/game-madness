@@ -24,7 +24,13 @@ Sprite::Sprite(string imagePath, Vector3 v) {
 	texture = Texture(imagePath);
 	pos = v;
 	scale = Vector3(1);
-	size = Vector3((float)texture.GetWidth(), (float)texture.GetHeight(), 1);
+	
+	Vector3 test = Vector3((float)texture.GetWidth(), (float)texture.GetHeight(), 1);
+	size = test;
+	size.z = 1;
+	//size2 = test;
+	//size = Vector3((float)texture.GetWidth(), (float)texture.GetHeight(), 1);
+
 	rot = 0;
 	speed = 100;
 }

@@ -39,7 +39,22 @@ int main() {
 			player.GetSprite().RotateBy(100);
 		}
 
+		//these are for adding forces
 		if (Keyboard::Key(GLFW_KEY_W)) {
+			player.GetRB().AddForce(Vector3(0, 20, 0));
+		}
+		if (Keyboard::Key(GLFW_KEY_S)) {
+			player.GetRB().AddForce(Vector3(0, -20, 0));
+		}
+		if (Keyboard::Key(GLFW_KEY_A)) {
+			player.GetRB().AddForce(Vector3(-200, 0, 0));
+		}
+		if (Keyboard::Key(GLFW_KEY_D)) {
+			player.GetRB().AddForce(Vector3(200, 0, 0));
+		}
+
+		//These are for moving the sprite directly
+		/*if (Keyboard::Key(GLFW_KEY_W)) {
 			player.GetSprite().MoveUp();
 		}
 		if (Keyboard::Key(GLFW_KEY_S)) {
@@ -50,7 +65,7 @@ int main() {
 		}
 		if (Keyboard::Key(GLFW_KEY_D)) {
 			player.GetSprite().MoveRight();
-		}
+		}*/
 		
 		
 		//make sure to clear that back buffer, draw clear color and swap it

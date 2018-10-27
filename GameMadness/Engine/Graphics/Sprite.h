@@ -51,6 +51,7 @@ private:
 	float rot; //rotation
 	Vector3 scale;
 	Vector3 size;
+	Vector3 size2;
 };
 
 #endif

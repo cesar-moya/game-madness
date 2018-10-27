@@ -9,6 +9,7 @@ class Rigidbody {
 public:
 	Rigidbody();
 	void Initialize(float _friction, float _gravity, Vector3* _pos, float* _rot, Vector3* _scale, Vector3* _size);
+				  //float _friction, float _gravity, Vector3* _pos, float* _rot, Vector3* _scale, Vector3* _size
 	void Update();
 	void Render(Vector3 c);
 
