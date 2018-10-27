@@ -39,25 +39,50 @@ void Rigidbody::Render(Vector3 c) {
 	{
 		//lines go vertex to vertex, different from textures, write them in 2's
 		//bottom left to bottom right
-		glVertex2i(0, 0);
-		glVertex2i((int)size->x, 0);
+		glVertex2i(-(int)size->x / 2, -(int)size->y / 2);
+		glVertex2i( (int)size->x / 2, -(int)size->y / 2);
 
 		//bottom right to top right
-		glVertex2i((int)size->x, 0);
-		glVertex2i((int)size->x, (int)size->y);
+		glVertex2i((int)size->x / 2, -(int)size->y / 2);
+		glVertex2i((int)size->x / 2,  (int)size->y / 2);
 
 		//top right to top left
-		glVertex2i((int)size->x, (int)size->y);
-		glVertex2i(0, (int)size->y);
+		glVertex2i((int)size->x / 2, (int)size->y / 2);
+		glVertex2i(-(int)size->x / 2, (int)size->y / 2);
 
 		//top left to bottom left
-		glVertex2i(0, (int)size->y);
-		glVertex2i(0, 0);
+		glVertex2i(-(int)size->x / 2, (int)size->y / 2);
+		glVertex2i(-(int)size->x / 2, -(int)size->y / 2);
+
+						////bottom left to bottom right
+						//glVertex2i(0, 0);
+						//glVertex2i((int) size->x, 0);
+
+						////bottom right to top right
+						//glVertex2i((int) size->x, 0);
+						//glVertex2i((int) size->x, (int) size->y);
+
+						////top right to top left
+						//glVertex2i((int) size->x, (int) size->y);
+						//glVertex2i(0, (int) size->y);
+
+						////top left to bottom left
+						//glVertex2i(0, (int) size->y);
+						//glVertex2i(0, 0);
 	}
 	glEnd();
 }
 
 void Rigidbody::AddForce(Vector3 force) {
 	vel = vel + force;
+}
+
+void Rigidbody::SetVel(Vector3 _vel) {
+	vel = _vel;
+	//cout << "velocity added" << endl;
+}
+
+Vector3 Rigidbody::GetVel() {
+	return vel;
 }
 

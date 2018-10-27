@@ -24,13 +24,7 @@ Sprite::Sprite(string imagePath, Vector3 v) {
 	texture = Texture(imagePath);
 	pos = v;
 	scale = Vector3(1);
-	
-	Vector3 test = Vector3((float)texture.GetWidth(), (float)texture.GetHeight(), 1);
-	size = test;
-	size.z = 1;
-	//size2 = test;
-	//size = Vector3((float)texture.GetWidth(), (float)texture.GetHeight(), 1);
-
+	size = Vector3((float) texture.GetWidth(), (float) texture.GetHeight(), 1);
 	rot = 0;
 	speed = 100;
 }
@@ -62,14 +56,22 @@ void Sprite::Render() {
 	{
 		//they usually put these lines side by side b/c they deal with the same data
 		//the values xPos and yPos here are "from" where you translated before (glTranslatef)
-		//bottom left
-		glTexCoord2f(0, 0);    glVertex2i(0, 0);
+		
+		glTexCoord2f(0, 0);    glVertex2i(-texture.GetWidth() / 2, -texture.GetHeight() / 2);
 		//bottom right
-		glTexCoord2f(1, 0);    glVertex2i(texture.GetWidth(), 0);
+		glTexCoord2f(1, 0);    glVertex2i(texture.GetWidth() / 2, -texture.GetHeight() / 2);
 		//top right
-		glTexCoord2f(1, 1);    glVertex2i(texture.GetWidth(), texture.GetHeight());
+		glTexCoord2f(1, 1);    glVertex2i(texture.GetWidth() / 2, texture.GetHeight() / 2);
 		//top left
-		glTexCoord2f(0, 1);    glVertex2i(0, texture.GetHeight());
+		glTexCoord2f(0, 1);    glVertex2i(-texture.GetWidth() / 2, texture.GetHeight() / 2);
+							////bottom left
+							//glTexCoord2f(0, 0);    glVertex2i(0, 0);
+							////bottom right
+							//glTexCoord2f(1, 0);    glVertex2i(texture.GetWidth(), 0);
+							////top right
+							//glTexCoord2f(1, 1);    glVertex2i(texture.GetWidth(), texture.GetHeight());
+							////top left
+							//glTexCoord2f(0, 1);    glVertex2i(0, texture.GetHeight());
 	}
 	glEnd(); //ends the drawing
 

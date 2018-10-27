@@ -125,6 +125,7 @@
     <ClCompile Include="Engine\Math\Vector3.cpp" />
     <ClCompile Include="Engine\Physics\Rigidbody.cpp" />
     <ClCompile Include="Flappy\Flapper.cpp" />
+    <ClCompile Include="Flappy\InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="Engine\Math\Vector3.h" />
     <ClInclude Include="Engine\Physics\Rigidbody.h" />
     <ClInclude Include="Flappy\Flapper.h" />
+    <ClInclude Include="Flappy\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
