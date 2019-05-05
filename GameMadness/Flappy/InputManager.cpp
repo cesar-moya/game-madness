@@ -10,6 +10,8 @@ void InputManager::Update() {
 		flapper->Flap();
 	}
 
+	flapper->GetSprite().MoveTo(Vector3(Mouse::GetMouseX(), Mouse::GetMouseY(), 0));
+
 	/*if (Mouse::ButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
 		flapper->GetSprite().RotateBy(100);
 	}
