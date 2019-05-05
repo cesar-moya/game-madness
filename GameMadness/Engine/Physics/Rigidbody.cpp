@@ -30,7 +30,7 @@ void Rigidbody::Update() {
 
 	//at the end of every frame we want to modify the position
 	vel.x *= friction;
-	//vel.y += gravity;
+	vel.y += gravity;
 	*pos = *pos + (vel * Engine::GetDT());
 
 	//cout << lastRot << "::" << *rot << endl;

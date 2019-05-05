@@ -28,7 +28,7 @@ void Flapper::Update() {
 	float newRot = (maxRot / flapForce) * yVel;
 	//cout << "yVel:" << yVel << ", newRot:" << newRot << endl;
 
-	//sprite.RotateTo(newRot);
+	sprite.RotateTo(newRot);
 }
 
 void Flapper::Render() {
@@ -37,9 +37,9 @@ void Flapper::Render() {
 }
 
 void Flapper::Flap() {
-	//rb.SetVel(Vector3(0, flapForce, 0));
-	//sprite.RotateTo(maxRot);
-	sprite.RotateBy(10);
+	rb.SetVel(Vector3(0, flapForce, 0));
+	sprite.RotateTo(maxRot);
+	//sprite.RotateBy(10);
 }
 
 Sprite& Flapper::GetSprite() {
