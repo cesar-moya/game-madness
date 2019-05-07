@@ -64,7 +64,7 @@ void Sprite::Render() {
 		glTexCoord2f(1, 1);    glVertex2i(texture.GetWidth() / 2, texture.GetHeight() / 2);
 		//top left
 		glTexCoord2f(0, 1);    glVertex2i(-texture.GetWidth() / 2, texture.GetHeight() / 2);
-							////bottom left
+		//bottom left
 							//glTexCoord2f(0, 0);    glVertex2i(0, 0);
 							////bottom right
 							//glTexCoord2f(1, 0);    glVertex2i(texture.GetWidth(), 0);

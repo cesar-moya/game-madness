@@ -148,8 +148,11 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Art\biplane.png" />
+    <Image Include="Assets\Art\gameover.png" />
     <Image Include="Assets\Art\nightraider.png" />
+    <Image Include="Assets\Art\pipe.png" />
     <Image Include="Assets\Art\plane.png" />
+    <Image Include="Assets\Art\spacetostart.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

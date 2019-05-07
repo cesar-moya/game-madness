@@ -100,5 +100,14 @@
     <Image Include="Assets\Art\nightraider.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Assets\Art\gameover.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Art\pipe.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Art\spacetostart.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
