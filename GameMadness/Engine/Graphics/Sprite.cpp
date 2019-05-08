@@ -128,7 +128,14 @@ void Sprite::SetScale(float x) {
 ///scales not proportionally
 void Sprite::SetScale(Vector3 v) {
 	scale = v;
+}
 
+void Sprite::FlipHorizontal() {
+	scale.x = -scale.x;
+}
+
+void Sprite::FlipVertical() {
+	scale.y = -scale.y;
 }
 
 Vector3* Sprite::GetPos() {

@@ -129,6 +129,7 @@
     <ClCompile Include="Flappy\Flapper.cpp" />
     <ClCompile Include="Flappy\InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Flappy\Pipe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine\Engine.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="Engine\Physics\Rigidbody.h" />
     <ClInclude Include="Flappy\Flapper.h" />
     <ClInclude Include="Flappy\InputManager.h" />
+    <ClInclude Include="Flappy\Pipe.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

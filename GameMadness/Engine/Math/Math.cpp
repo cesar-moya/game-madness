@@ -48,4 +48,11 @@ namespace Math {
 		}
 		return max;
 	}
+
+	float Math::Abs(float x) {
+		if (x > 0)
+			return x;
+		else
+			return -x;
+	}
 }
