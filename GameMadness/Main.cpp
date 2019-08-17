@@ -5,12 +5,17 @@
 #include "Flappy/Flapper.h"
 #include "Flappy/InputManager.h"
 #include "Flappy/Pipe.h"
+#include "Flappy/PipeManager.h"
 
 #include <iostream>
+#include <time.h>
+
 using namespace std;
 
 int main() {
 	cout << "Welcome to Game Madness!" << endl;
+
+	srand(time(NULL)); //used on pipeManager rand() function, a sort of initializer
 	
 	Engine engine;
 	const char* title = "Welcome";
@@ -26,17 +31,22 @@ int main() {
 	Flapper player(testSprite);
 
 	Pipe::Initialize();
-	Pipe pipe = Pipe(Vector3(0, 0, 0));
+	PipeManager pipeManager;
 
-	InputManager im(&player, &pipe);
+	
+
+	InputManager im(&player);
 	
 	while (true) {
 		engine.Update(); //makes sure we can poll those events so we can move the screen around
 		player.Update();
-		pipe.Update();
-		
-		bool isColliding = Rigidbody::IsColliding(player.GetRB(), pipe.GetTopRB()) || Rigidbody::IsColliding(player.GetRB(), pipe.GetBotRB());
+		pipeManager.Update();
+
+		bool isColliding = pipeManager.CheckCollission(player);
 		cout << (isColliding ? "COLLIDING!!" : "....") << endl;
+
+		//bool isColliding = Rigidbody::IsColliding(player.GetRB(), pipe.GetTopRB()) || Rigidbody::IsColliding(player.GetRB(), pipe.GetBotRB());
+		//cout << (isColliding ? "COLLIDING!!" : "....") << endl;
 
 		//handling input, this moves the sprite along with the mouse movement
 		//testSprite.SetPos((float)Mouse::GetMouseX(), (float)Mouse::GetMouseY()); 
@@ -46,7 +56,7 @@ int main() {
 		//make sure to clear that back buffer, draw clear color and swap it
 		engine.BeginRender(); 
 		player.Render();
-		pipe.Render();
+		pipeManager.Render();
 		engine.EndRender();
 	}
 	

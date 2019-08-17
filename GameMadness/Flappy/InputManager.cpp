@@ -1,8 +1,7 @@
 #include "InputManager.h"
 
-InputManager::InputManager(Flapper* _flapper, Pipe* _pipe) {
+InputManager::InputManager(Flapper* _flapper) {
 	flapper = _flapper;
-	pipe = _pipe;
 }
 
 void InputManager::Update() {
@@ -11,7 +10,7 @@ void InputManager::Update() {
 		flapper->Flap();
 	}
 
-	pipe->MoveTo(Vector3(Mouse::GetMouseX(), Mouse::GetMouseY(), 0));
+	//pipe->MoveTo(Vector3(Mouse::GetMouseX(), Mouse::GetMouseY(), 0));
 
 	/*if (Mouse::ButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
 		flapper->GetSprite().RotateBy(100);

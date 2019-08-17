@@ -14,14 +14,20 @@ public:
 	Pipe();
 	Pipe(Vector3 pos);
 
+	void SetGap(float _gap);
+
 	void Update();
 	void Render();
 	void MoveTo(Vector3 to);
 	void MoveBy(Vector3 by);
 
+	float GetX();
+	float GetWidth();
+
 	Rigidbody GetTopRB();
 	Rigidbody GetBotRB();
 
+	
 
 private:
 	Sprite topSprite;

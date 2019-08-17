@@ -21,40 +21,44 @@ Pipe::Pipe() {
 	botSprite = Sprite(*pipeSprite);
 
 	gap = 350;
-	speed = 10;
+	speed = 200;
 }
 
 Pipe::Pipe(Vector3 _pos) : Pipe() {
 	if (!pipeSprite) {
 		return;
 	}
-	pos = _pos;
+	//pos = _pos;
 
-	Vector3 topPos = pos;
+	pos = _pos + Vector3(GetWidth(), 0, 0);
+
+	//Vector3 topPos = pos;
 	
 	UpdatePos();
 	topSprite.FlipVertical();
-
-
+	
 	Rect topRC = Rect();
 	topRC.SetSize(Vector3(Math::Abs(topSprite.GetSize()->x * topSprite.GetScale()->x), Math::Abs(topSprite.GetSize()->y * topSprite.GetScale()->y), 1));
 	topRB = Rigidbody();
-	topRB.Initialize(0, 0, topSprite.GetPos(), topSprite.GetRot(), topSprite.GetScale(), topSprite.GetSize(), topRC);
-
+	topRB.Initialize(1, 0, topSprite.GetPos(), topSprite.GetRot(), topSprite.GetScale(), topSprite.GetSize(), topRC);
 
 	Vector3 botPos = pos;
-	
-	botSprite.MoveTo(botPos);
-
+	UpdatePos();
 	Rect botRC = Rect();
 	botRC.SetSize(Vector3(Math::Abs(botSprite.GetSize()->x * botSprite.GetScale()->x), Math::Abs(botSprite.GetSize()->y * botSprite.GetScale()->y), 1));
 	botRB = Rigidbody();
-	botRB.Initialize(0, 0, botSprite.GetPos(), botSprite.GetRot(), botSprite.GetScale(), botSprite.GetSize(), botRC);
+	botRB.Initialize(1, 0, botSprite.GetPos(), botSprite.GetRot(), botSprite.GetScale(), botSprite.GetSize(), botRC);
+
+	topRB.AddForce(Vector3(-speed, 0, 0));
+	botRB.AddForce(Vector3(-speed, 0, 0));
+}
+
+void Pipe::SetGap(float _gap) {
+	gap = _gap;
+	UpdatePos();
 }
 
 void Pipe::Update() {
-	topSprite.MoveBy(Vector3(-speed * Engine::GetDT(), 0, 0));
-	botSprite.MoveBy(Vector3(-speed * Engine::GetDT(), 0, 0));
 	topRB.Update();
 	botRB.Update();
 }
@@ -74,6 +78,14 @@ void Pipe::MoveTo(Vector3 to) {
 void Pipe::MoveBy(Vector3 by) {
 	pos = pos + by;
 	UpdatePos();
+}
+
+float Pipe::GetX() {
+	return topSprite.GetPos()->x;
+}
+
+float Pipe::GetWidth() {
+	return topSprite.GetSize()->x * topSprite.GetScale()->x;
 }
 
 void Pipe::UpdatePos() {
