@@ -48,7 +48,7 @@ bool Mouse::ButtonDown(int button) {
 }
 
 bool Mouse::ButtonUp(int button) {
-	bool y = buttonsUp[button];
+	bool x = buttonsUp[button];
 	buttonsUp[button] = false;
 	return x;
 }

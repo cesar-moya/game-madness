@@ -1,9 +1,11 @@
 #include "Engine.h"
 #include"IO/Mouse.h"
+#include "IO/Keyboard.h"
 
 int Engine::SCREEN_WIDTH = 1024;
 int Engine::SCREEN_HEIGHT = 768;
 GLFWwindow* Engine::window = NULL;
+float Engine::dt = 0;
 
 Engine::Engine() {
 
@@ -33,9 +35,13 @@ bool Engine::Initialize(const char* windowTitle) {
 	//in glfw there is double buffering, one is what's being shown, the other one is where you draw, then you swap them
 	glfwSwapInterval(1); //secs
 
-	//setup the mouse callbacks (tell GLFW about them), each time a cursor position is polled, it'll call our callback with the data
+	//CALLBACKS
+	//setup mouse callbacks (tell GLFW about them), each time a cursor position is polled, it'll call our callback with the data
 	glfwSetCursorPosCallback(window, Mouse::MousePosCallback);
 	glfwSetMouseButtonCallback(window, Mouse::MouseButtonCallback);
+
+	//keyboard callbacks
+	glfwSetKeyCallback(window, Keyboard::KeyCallback);
 
 	//set the monitor/video mode
 	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
@@ -66,11 +72,20 @@ bool Engine::Initialize(const char* windowTitle) {
 	glEnable(GL_ALPHA_TEST);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	lastTime = (float)glfwGetTime();
 	
 	return true;
 }
 
 void Engine::Update() {
+	//this is the first function that gets called when the game loop
+	//calculate how long it took to go through a single instance of the game loop
+	float now = (float)glfwGetTime();
+	dt = now - lastTime;
+	lastTime = now;
+
+	
 	//allow glfw to allow all events to stack in the queue, like hovering mouse, etc. these were setup on initialize.
 	glfwPollEvents();
 }
@@ -90,4 +105,8 @@ void Engine::BeginRender() {
 void Engine::EndRender() {
 	glfwSwapBuffers(window); 
 	//anything drawn after this will never be seen by human eyes
+}
+
+float Engine::GetDT() {
+	return dt;
 }
