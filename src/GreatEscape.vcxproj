@@ -24,7 +24,7 @@
     <ProjectGuid>{18546590-819F-4A59-AE7F-AD0C94DE13F2}</ProjectGuid>
     <RootNamespace>GameTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>GameMadness</ProjectName>
+    <ProjectName>GreatEscape</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
