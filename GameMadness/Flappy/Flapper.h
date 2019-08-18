@@ -18,6 +18,8 @@ public:
 	Sprite& GetSprite();
 	Rigidbody& GetRB();
 
+	void Reset();
+
 private:
 	Sprite sprite;
 	Rigidbody rb;

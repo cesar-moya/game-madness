@@ -12,7 +12,7 @@ Flapper::Flapper(Sprite _sprite) : Flapper() {
 	sprite = _sprite;
 
 	Rect boundingRect = Rect();
-	Vector3 sizeOffset(0.8, 0.6, 1);
+	Vector3 sizeOffset(0.8, 0.3, 1);
 	boundingRect.SetSize(*sprite.GetSize() * *sprite.GetScale() * sizeOffset);
 	rb.Initialize(0.8f, -40, sprite.GetPos(), sprite.GetRot(), sprite.GetScale(), sprite.GetSize(), boundingRect);
 }
@@ -51,3 +51,9 @@ Rigidbody& Flapper::GetRB() {
 	return rb;
 }
 
+void Flapper::Reset() {
+	sprite.MoveTo(Vector3(Engine::SCREEN_WIDTH / 2, Engine::SCREEN_HEIGHT / 2, 0));
+	sprite.RotateTo(0);
+	rb.SetVel(Vector3(0, 0, 0));
+	
+}

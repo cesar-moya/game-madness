@@ -15,6 +15,7 @@ public:
 	Pipe(Vector3 pos);
 
 	void SetGap(float _gap);
+	float GetPrevPos();
 
 	void Update();
 	void Render();
@@ -38,6 +39,7 @@ private:
 	void UpdatePos();
 
 	Vector3 pos;
+	float prevPos;
 
 	float gap; //the gap between the pipes
 	float speed; //at which it moves to the left

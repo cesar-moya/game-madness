@@ -3,16 +3,20 @@
 #include "../Engine/Physics/Rigidbody.h"
 
 PipeManager::PipeManager() :
-	xSeparation(800),
-	ySeparation(500),
+	xStartSeparation(800),
+	yStartSeparation(500),
+	xSeparation(xStartSeparation),
+	ySeparation(yStartSeparation),
 	minXSeparation(200),
 	minYSeparation(300),
 	xSeparationSpeed(10),
 	ySeparationSpeed(10),
 	minSpawnY(284),
 	maxSpawnY(Engine::SCREEN_HEIGHT - 284),
-	totalPipes(0)
+	totalPipes(0),
+	points(0)
 {
+	Pipe::Initialize();
 	CreatePipe();
 	//pipes.push_back(new Pipe(Vector3(1200, Engine::SCREEN_HEIGHT / 2, 0)));
 	//pipes.push_back(new Pipe(Vector3(2400, Engine::SCREEN_HEIGHT / 2, 0)));
@@ -39,12 +43,26 @@ void PipeManager::Update() {
 			}
 		}
 
+		//if we just crossed the middle of the screen, we score a point
+		if (pipes[i]->GetX() < Engine::SCREEN_WIDTH / 2 &&
+			pipes[i]->GetPrevPos() > Engine::SCREEN_WIDTH / 2) 
+		{
+			points++;
+		}
+
+		//TODO: draw points on screen, GLFW doesn't do that
+		//recommended library: freetype, load ttf fonts or real time fonts and render them to the screen
+		//https://www.freetype.org/
+		cout << "Points: " << points << endl;
+
 	}
 
 	for (unsigned int i = 0; i < pipesToDelete.size(); i++) {
 		delete pipes[pipesToDelete[i]];
 		pipes.erase(pipes.begin() + pipesToDelete[i]); //why begin?
 	}
+
+	
 }
 
 void PipeManager::Render() {
@@ -81,4 +99,21 @@ void PipeManager::CreatePipe() {
 			ySeparation -= ySeparationSpeed;
 		}
 	}
+}
+
+void PipeManager::Reset() {
+	//pipes.erase(pipes.begin(), pipes.end());
+	int size = pipes.size();
+	for (unsigned int i = 0; i < size; i++) {
+		delete pipes[i];
+	}
+	pipes.clear();
+	
+	xSeparation = xStartSeparation;
+	ySeparation = yStartSeparation;
+	//xSeparationSpeed = 10;
+	//ySeparationSpeed = 10;
+	totalPipes = 0;
+	points = 0;
+	CreatePipe();
 }

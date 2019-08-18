@@ -128,6 +128,7 @@
     <ClCompile Include="Engine\Physics\Rigidbody.cpp" />
     <ClCompile Include="Flappy\Flapper.cpp" />
     <ClCompile Include="Flappy\InputManager.cpp" />
+    <ClCompile Include="Flappy\GameManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Flappy\Pipe.cpp" />
     <ClCompile Include="Flappy\PipeManager.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="Flappy\InputManager.h" />
     <ClInclude Include="Flappy\Pipe.h" />
     <ClInclude Include="Flappy\PipeManager.h" />
+    <ClInclude Include="Flappy\GameManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -17,10 +17,14 @@ public:
 
 	bool CheckCollission(Flapper& flapper);
 
+	void Reset();
+
 private:
 	void CreatePipe();
 	vector<Pipe*> pipes;
 	
+	float xStartSeparation;
+	float yStartSeparation;
 	float xSeparation;
 	float minXSeparation;
 	float ySeparation;
@@ -32,6 +36,7 @@ private:
 	int maxSpawnY;
 
 	int totalPipes;
+	int points;
 };
 
 #endif
