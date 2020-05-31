@@ -1,7 +1,6 @@
 #include "Flapper.h"
 #include "../Engine/Engine.h"
 
-
 Flapper::Flapper() {
 	flapForce = 750;
 	maxRot = 30;
@@ -10,7 +9,6 @@ Flapper::Flapper() {
 
 Flapper::Flapper(Sprite _sprite) : Flapper() {
 	sprite = _sprite;
-
 	Rect boundingRect = Rect();
 	Vector3 sizeOffset(0.8, 0.3, 1);
 	boundingRect.SetSize(*sprite.GetSize() * *sprite.GetScale() * sizeOffset);
@@ -27,8 +25,6 @@ void Flapper::Update() {
 		flapForce = 750;
 	}
 	float newRot = (maxRot / flapForce) * yVel;
-	//cout << "yVel:" << yVel << ", newRot:" << newRot << endl;
-
 	sprite.RotateTo(newRot);
 }
 

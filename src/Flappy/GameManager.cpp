@@ -5,27 +5,16 @@ GameManager::GameManager() {
 	srand(time(NULL)); //used on pipeManager rand() function, a sort of initializer
 	mEngine = new Engine();
 	const char* title = "GameMadness";
-	//engine.Initialize(title);
 	mEngine->Initialize(title);
-
-	//opengameart.org to find free sprites, music etc.
-	Sprite testSprite = Sprite("Assets/Art/biplane.png", Vector3(Engine::SCREEN_WIDTH / 2, Engine::SCREEN_HEIGHT / 2, 0));
-	testSprite.SetScale(0.15f);
-	//Sprite testSprite = Sprite("Assets/Art/plane.png", 0, 0); 
-	//Sprite raider = Sprite("Assets/Art/nightraider.png", 50, 50);
-	
-	//Flapper player(testSprite);
-	//PipeManager pipeManager;
-	mFlapper = new Flapper(testSprite);
+	Sprite biplane = Sprite("Assets/Art/biplane.png", Vector3(Engine::SCREEN_WIDTH / 2, Engine::SCREEN_HEIGHT / 2, 0));
+	biplane.SetScale(0.15f);
+	mFlapper = new Flapper(biplane);
 	mPipeManager = new PipeManager();
 	mInputManager = new InputManager(mFlapper);
-
 	mStartSprite = Sprite("Assets/Art/spacetostart.png", Vector3(Engine::SCREEN_WIDTH / 2, Engine::SCREEN_HEIGHT / 2, 0));
 	mGameOverSprite = Sprite("Assets/Art/gameover.png", Vector3(Engine::SCREEN_WIDTH / 2, Engine::SCREEN_HEIGHT / 2, 0));
 	mGameOverSprite.SetScale(0.15f);
-
 	SetState(State::START);
-
 }
 
 GameManager::~GameManager() {

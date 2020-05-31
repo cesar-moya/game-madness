@@ -8,7 +8,7 @@ float Vector3::Dot(const Vector3& a, const Vector3& b) {
 }
 
 //study how to calculate the projection of one [vector] onto another?
-//Episode 5, 1:08:02
+//EP 5, 1:08:02
 Vector3 Vector3::Project(const Vector3& a, const Vector3& b){
 	//projects a onto b
 	return Vector3(

@@ -18,7 +18,6 @@ Texture::Texture(string path) {
 	}
 	cout << "Texture Width: " << width << endl;
 	cout << "Texture Height: " << height << endl;
-
 }
 
 int Texture::GetId() {
